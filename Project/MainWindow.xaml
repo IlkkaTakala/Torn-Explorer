@@ -8,10 +8,12 @@
     <Window.DataContext>
         <viewmodel:WindowView />
     </Window.DataContext>
+    
     <Grid>
-        <Menu>
+        <Menu VerticalAlignment="Top" Height="auto">
             <MenuItem Header="Add API key" Command="{Binding SwitchPageCommand}"/>
             <MenuItem Header="Refresh" Command="{Binding Refresh}"/>
+            <MenuItem Header="Profile" Command="{Binding OpenProfile}"/>
         </Menu>
         <Frame Margin="0,20,0,0" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}" />
     </Grid>

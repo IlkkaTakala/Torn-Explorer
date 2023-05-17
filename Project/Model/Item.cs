@@ -24,16 +24,16 @@ namespace Project.Model
         public string Type { get; set; }
 
         [JsonProperty("buy_price")]
-        public int BuyPrice { get; set; }
+        public Int64 BuyPrice { get; set; }
 
         [JsonProperty("sell_price")]
-        public int SellPrice { get; set; }
+        public Int64 SellPrice { get; set; }
 
         [JsonProperty("market_value")]
-        public int MarketValue { get; set; }
+        public Int64 MarketValue { get; set; }
 
         [JsonProperty("circulation")]
-        public int Circulation { get; set; }
+        public Int64 Circulation { get; set; }
 
         [JsonProperty("image")]
         public string Image { get; set; }

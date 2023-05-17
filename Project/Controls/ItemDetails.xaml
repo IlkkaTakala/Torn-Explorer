@@ -17,7 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -29,7 +29,7 @@
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Item.Effect, FallbackValue=Effect:}" Foreground="Green" TextWrapping="Wrap"/>
         </StackPanel>
         <Image HorizontalAlignment="Right" Height="100" VerticalAlignment="Top" Width="100" Grid.Column="1" Margin="0,5,35,0" Grid.RowSpan="2" Source="{Binding Item.Image}"/>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Height="auto" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -44,25 +44,25 @@
                     <Setter Property="BorderBrush" Value="LightGray" />
                 </Style>
             </Grid.Resources>
-            <Border>
+            <Border Padding="5">
                 <StackPanel Orientation="Horizontal"  >
                     <Label Content="Buy:" FontWeight="Bold" VerticalAlignment="Center" />
                     <Label Content="{Binding Item.BuyPrice, FallbackValue=100, Converter={StaticResource Money}}" VerticalAlignment="Center" />
                 </StackPanel>
             </Border>
-            <Border Grid.Row="1">
+            <Border Padding="5" Grid.Row="1">
                 <StackPanel Orientation="Horizontal"  >
                     <Label Content="Sell:" FontWeight="Bold" VerticalAlignment="Center" />
                     <Label Content="{Binding Item.SellPrice, FallbackValue=100, Converter={StaticResource Money}}" VerticalAlignment="Center" />
                 </StackPanel>
             </Border>
-            <Border Grid.Column="1">
+            <Border Padding="5" Grid.Column="1">
                 <StackPanel Orientation="Horizontal"  >
                     <Label Content="Value:" FontWeight="Bold" VerticalAlignment="Center" />
                     <Label Content="{Binding Item.MarketValue, FallbackValue=100, Converter={StaticResource Money}}" VerticalAlignment="Center" />
                 </StackPanel>
             </Border>
-            <Border Grid.Row="1" Grid.Column="1">
+            <Border Padding="5" Grid.Row="1" Grid.Column="1">
                 <StackPanel Orientation="Horizontal"  >
                     <Label Content="Circulation:" FontWeight="Bold" VerticalAlignment="Center" />
                     <Label Content="{Binding Item.Circulation, FallbackValue=100, Converter={StaticResource Circulation}}" VerticalAlignment="Center" />

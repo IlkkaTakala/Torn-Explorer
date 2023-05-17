@@ -92,9 +92,14 @@
     <Compile Include="Controls\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HyperLinkExtension.cs" />
+    <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\RWar.cs" />
     <Compile Include="Repository\APIRepository.cs" />
     <Compile Include="Repository\LocalRepository.cs" />
@@ -106,6 +111,7 @@
     <Compile Include="ViewModel\Converter\IntToTextConverter.cs" />
     <Compile Include="ViewModel\ItemDetailVM.cs" />
     <Compile Include="ViewModel\ItemsVM.cs" />
+    <Compile Include="ViewModel\ProfileVM.cs" />
     <Compile Include="ViewModel\SettingsVM.cs" />
     <Compile Include="ViewModel\WindowView.cs" />
     <Page Include="Controls\ItemDetails.xaml">
@@ -113,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

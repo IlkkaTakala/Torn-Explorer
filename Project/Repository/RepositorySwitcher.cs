@@ -17,8 +17,10 @@ namespace Project.Repository
     {
         Task<Dictionary<int, Item>> GetItems();
         Task<Dictionary<int, Item>> GetItems(FilterParams value);
-        Task<Dictionary<int, RWar>> GetWars();
+        Task<List<RWar>> GetWars();
         Task<List<string>> GetItemTypes();
+        Task<Profile> GetProfile();
+        Task RefreshProfile();
         Task RefreshItems();
         Task RefreshWars();
         Task RefreshItemTypes();
@@ -26,8 +28,8 @@ namespace Project.Repository
     public class RepositorySwitcher
     {
 
-        private static string API_KEY = "";
-        private static bool useLocal = true;
+        private static string API_KEY = "6AySUcuLPwo06cA8";
+        private static bool useLocal = false;
 
         private static LocalRepository local;
         private static APIRepository online;
@@ -37,6 +39,10 @@ namespace Project.Repository
             API_KEY = value;
             useLocal = API_KEY == null;
         }
+        public static string GetAPI()
+        {
+            return API_KEY;
+        }
 
         public static IRepository GetRepository()
         {
@@ -44,7 +50,9 @@ namespace Project.Repository
         }
         public static void SetupRepository()
         {
-            local = new LocalRepository();
+            if (local == null)
+                local = new LocalRepository();
+            if (online == null)
             online = new APIRepository();
         }
 

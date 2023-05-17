@@ -1,0 +1,53 @@
+﻿<Window x:Class="Project.Controls.Profile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project.Controls" xmlns:viewmodel="clr-namespace:Project.ViewModel" xmlns:converter="clr-namespace:Project.ViewModel.Converter"
+        mc:Ignorable="d"
+        Title="Profile" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodel:ProfileVM />
+    </Window.DataContext>
+    <Window.Resources>
+        <converter:IntToTextConverter x:Key="Money"/>
+    </Window.Resources>
+    <Grid>
+        <Label Content="{Binding CurrentProfile.Name}" HorizontalAlignment="Left" Margin="50,49,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Label Content="{Binding CurrentProfile.IDStr}" HorizontalAlignment="Left" Margin="134,49,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Label Content="{Binding CurrentProfile.Property}" HorizontalAlignment="Left" Margin="50,131,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Age}" HorizontalAlignment="Left" Margin="325,86,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Rank}" HorizontalAlignment="Left" Margin="50,81,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="{Binding CurrentProfile.Level}" HorizontalAlignment="Left" Margin="329,49,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="{Binding CurrentProfile.JobStr}" HorizontalAlignment="Left" Margin="55,217,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.LifeStr}" HorizontalAlignment="Left" Margin="50,175,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.FactionStr}" HorizontalAlignment="Left" Margin="55,243,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Last_action.Status}" HorizontalAlignment="Left" Margin="328,139,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Last_action.Timestamp}" HorizontalAlignment="Left" Margin="376,139,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Total, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="564,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Bank, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="564,68,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Items, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="564,94,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Status.Description}" HorizontalAlignment="Left" Margin="164,175,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Status.Details}" HorizontalAlignment="Left" Margin="164,199,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Status.Until}" HorizontalAlignment="Left" Margin="502,199,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Status.State}" HorizontalAlignment="Left" Margin="164,147,0,0" VerticalAlignment="Top"/>
+        <Button Content="Open Torn" HorizontalAlignment="Left" Margin="50,376,0,0" VerticalAlignment="Top" Height="32" Width="90" />
+        <Label Content="{Binding CurrentProfile.Networth.Stockmarket, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="564,121,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Properties, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="564,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Bazaar, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="564,173,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Unpaidfees, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="685,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Wallet, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="218,113,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Auctionhouse, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="685,68,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Bookie, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="685,100,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Cayman, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="685,134,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Company, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="674,194,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Displaycase, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="685,238,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Enlistedcars, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="688,277,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Itemmarket, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="674,334,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Loan, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="611,295,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Pending, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="735,207,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Piggybank, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="622,230,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentProfile.Networth.Vault, Converter={StaticResource Money}}" HorizontalAlignment="Left" Margin="564,256,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

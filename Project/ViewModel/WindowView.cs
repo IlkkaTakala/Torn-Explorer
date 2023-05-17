@@ -21,6 +21,13 @@ namespace Project.ViewModel
 
         public RelayCommand SwitchPageCommand { get; set; }
         public RelayCommand Refresh { get; set; }
+        public RelayCommand OpenProfile { get; set; }
+
+        private void OpenProf()
+        {
+            var page = new Profile();
+            page.Show();
+        }
 
         private async void RefreshData()
         {
@@ -54,6 +61,7 @@ namespace Project.ViewModel
             CurrentPage = MainPage;
             SwitchPageCommand = new RelayCommand(SwitchPage);
 			Refresh = new RelayCommand(RefreshData);
+            OpenProfile = new RelayCommand(OpenProf);
         }
     }
 }

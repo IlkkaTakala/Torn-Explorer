@@ -49,7 +49,7 @@
     </UserControl.Resources>
     <Grid Width="80" Height="50">
         <Button Click="Selected">
-            <Image Source="{Binding Value.Image, IsAsync=true}" />
+            <Image Source="{Binding Value.Image, IsAsync=True }" />
         </Button>
     </Grid>
 </UserControl>

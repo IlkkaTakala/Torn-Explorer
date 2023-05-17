@@ -3,7 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Project" xmlns:controls="clr-namespace:Project.Controls" xmlns:viewmodel="clr-namespace:Project.ViewModel" xmlns:repository="clr-namespace:Project.Repository"
+      xmlns:local="clr-namespace:Project" 
+      xmlns:controls="clr-namespace:Project.Controls" 
+      xmlns:viewmodel="clr-namespace:Project.ViewModel" 
+      xmlns:helpers="clr-namespace:Project.Helpers"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage">
@@ -11,6 +14,13 @@
         <viewmodel:ItemsVM />
     </Page.DataContext>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,1">
+                <GradientStop Color="WhiteSmoke" Offset="0.1"/>
+                <GradientStop Color="#FFA3A3A3"/>
+
+            </LinearGradientBrush>
+        </Grid.Background>
         <TabControl Margin="0,0,0,0" TabStripPlacement="Left">
             <TabItem Header="Items">
                 <Grid Margin="5,20,5,0">
@@ -24,11 +34,12 @@
                                   ItemsSource="{Binding ItemTypes}" SelectedItem="{Binding SelectedType}"
                                   />
                         <TextBlock Text="Filter by name:" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtSearch" Text="{Binding SearchText}" TextWrapping="Wrap" Width="120" Margin="10,0,10,0" VerticalAlignment="Center" Padding="5"/>
-                        <Button Grid.Row="1" Content="Search" Padding="8,4,8,4" Margin=" 4"
-                            Command="{Binding Filter}" />
+                        <TextBox x:Name="txtSearch" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Delay=250}" TextWrapping="Wrap" 
+                                 Width="120" Margin="10,0,10,0" VerticalAlignment="Center" Padding="5"/>
+                        <!--<Button Grid.Row="1" Content="Search" Padding="8,4,8,4" Margin=" 4"
+                            Command="{Binding Filter}" />-->
                     </StackPanel>
-                    <ListView Grid.Row="1" x:Name="lstItems" SelectionMode="Single" Margin="0,10,0,0" ItemsSource="{Binding Items, IsAsync=True}">
+                    <ListView Grid.Row="1" x:Name="lstItems" BorderThickness="0" SelectionMode="Single" Margin="0,10,0,0" ItemsSource="{Binding Items, IsAsync=True}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Focusable" Value="false"/>
@@ -64,7 +75,15 @@
             </TabItem>
             <TabItem Header="Ranked wars">
                 <Grid>
-                    <ListView x:Name="lstWars" SelectionMode="Single" Margin="5,50,5,0" ItemsSource="{Binding Wars}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" Margin="15,5,0,0" Text="Ongoing ranked wars" />
+                    <TextBlock Grid.Row="1" FontSize="12" VerticalAlignment="Bottom" Margin="15,0,0,0" Text="Opening faction page requires login" />
+
+                    <ListView Grid.Row="2" BorderThickness="0" x:Name="lstWars" SelectionMode="Single" Margin="5,5,5,0" ItemsSource="{Binding Wars}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Focusable" Value="false"/>
@@ -81,13 +100,38 @@
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid Width="auto" Height="100">
-                                    <Border Background="Gray" CornerRadius="10">
+                                <Grid Width="auto" Height="auto" Margin="5, 5">
+                                    <Border BorderBrush="Gray" BorderThickness="1" Padding="10" CornerRadius="10">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="1, 0" EndPoint="1, 1">
+                                                <GradientStop Color="White" Offset="0" />
+                                                <GradientStop Color="Silver" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Value.Data.Start}" />
-                                            <TextBlock Text="{Binding Value.Data.End}" />
-                                            <TextBlock Text="{Binding Value.Data.Target}" />
-                                            <!--<TextBlock Text="{Binding Value.Factions.First.Name}" />-->
+                                            <Grid Margin="20, 0, 20, 0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Grid.Row="1">
+                                                    <Hyperlink NavigateUri="{Binding FirstUrl}" TextDecorations="None" helpers:HyperlinkExtensions.IsExternal="true">
+                                                        <TextBlock Text="{Binding First.Name}" FontSize="16" HorizontalAlignment="Left"/>
+                                                    </Hyperlink>
+                                                </TextBlock>
+                                                <TextBlock Grid.Row="1" HorizontalAlignment="Right">
+                                                    <Hyperlink NavigateUri="{Binding SecondUrl}" TextDecorations="None" helpers:HyperlinkExtensions.IsExternal="true">
+                                                        <TextBlock Text="{Binding Second.Name}" FontSize="16"/>
+                                                    </Hyperlink>
+                                                </TextBlock>
+                                                <TextBlock Grid.Row="1" Text="{Binding Goal}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                                <TextBlock Grid.Row="0" Text="Target score" HorizontalAlignment="Center"/>
+                                                <TextBlock Grid.Row="2" Text="{Binding Starting}" HorizontalAlignment="Center" Margin="5,5,5,0" />
+                                                
+                                                <TextBlock Grid.Row="2" Foreground="{Binding FirstColor}" Text="{Binding First.Data}" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                                                <TextBlock Grid.Row="2" Foreground="{Binding SecondColor}" Text="{Binding Second.Data}" HorizontalAlignment="Right" Margin="0,0,0,0" />
+                                            </Grid>
                                         </StackPanel>
                                     </Border>
                                 </Grid>

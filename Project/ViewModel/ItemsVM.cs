@@ -46,7 +46,11 @@ namespace Project.ViewModel
 		public string SearchText
 		{
 			get { return _searchText; }
-			set { _searchText = value; }
+			set { 
+				_searchText = value;
+				OnPropertyChanged("SelectedType");
+				FilterItems();
+            }
 		}
 
 		private string _loadingString = "Loading...";
@@ -57,9 +61,9 @@ namespace Project.ViewModel
 			set { _loadingString = value; OnPropertyChanged("LoadingString"); }
 		}
 
-		private Dictionary<int, RWar> _wars;
+		private List<RWar> _wars;
 
-		public Dictionary<int, RWar> Wars
+		public List<RWar> Wars
 		{
 			get { return _wars; }
 			set { _wars = value; OnPropertyChanged("Wars"); }

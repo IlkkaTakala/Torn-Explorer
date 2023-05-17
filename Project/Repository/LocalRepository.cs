@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.AccessControl;
 using System.Threading.Tasks;
 
 namespace Project.Repository
@@ -13,7 +14,7 @@ namespace Project.Repository
     public class LocalRepository : IRepository
     {
         private Dictionary<int, Item> _items = null;
-        private Dictionary<int, RWar> _wars = null;
+        private List<RWar> _wars = null;
         private List<string> _itemtypes = null;
 
         async public Task<Dictionary<int, Item>> GetItems()
@@ -31,7 +32,7 @@ namespace Project.Repository
             var assembly = Assembly.GetExecutingAssembly();
             using (var reader = new StreamReader(assembly.GetManifestResourceStream("Project.Resources.sampleData.json")))
             {
-                _items = JObject.Parse(await reader.ReadToEndAsync()).SelectToken("items").Children().OfType<JProperty>().ToDictionary(x => int.Parse(x.Name), x => x.Value.ToObject<Item>());
+                _items = JObject.Parse(await reader.ReadToEndAsync()).SelectToken("items").ToObject<Dictionary<int, Item>>();
             }
         }
 
@@ -44,7 +45,7 @@ namespace Project.Repository
             ).ToDictionary(x => x.Key, x => x.Value);
         }
 
-        public async Task<Dictionary<int, RWar>> GetWars()
+        public async Task<List<RWar>> GetWars()
         {
             if (_wars == null)
             {
@@ -58,7 +59,7 @@ namespace Project.Repository
             var assembly = Assembly.GetExecutingAssembly();
             using (var reader = new StreamReader(assembly.GetManifestResourceStream("Project.Resources.sampleData.json")))
             {
-                _wars = JObject.Parse(await reader.ReadToEndAsync()).SelectToken("rankedwars").Children().OfType<JProperty>().ToDictionary(x => int.Parse(x.Name), x => x.Value.ToObject<RWar>());
+                _wars = JObject.Parse(await reader.ReadToEndAsync()).SelectToken("rankedwars").ToObject<Dictionary<int, RWar>>().Values.Where(war => war.Data.End.CompareTo(MicrosecondEpochConverter._epoch) == 0).OrderBy(war => war.Starting).ToList();
             }
         }
 
@@ -74,6 +75,16 @@ namespace Project.Repository
         {
             _itemtypes = (await GetItems()).Select(i => i.Value.Type).Distinct().ToList();
             _itemtypes.Insert(0, "All");
+        }
+
+        public Task<Profile> GetProfile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RefreshProfile()
+        {
+            throw new NotImplementedException();
         }
     }
 }
