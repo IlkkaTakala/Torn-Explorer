@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project.Repository;
+using Project.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,21 @@ namespace Project.Controls
         public ItemButton()
         {
             InitializeComponent();
+        }
+
+        public int ItemID 
+        {
+            get { return (int)GetValue(ItemIDProperty); }
+            set { SetValue(ItemIDProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemIDProperty =
+        DependencyProperty.Register("ItemID", typeof(int), typeof(ItemButton), null);
+        public void Selected(object sender, RoutedEventArgs e)
+        {
+            var Details = new ItemDetails();
+            (Details.DataContext as ItemDetailVM).Item = RepositorySwitcher.GetRepository().GetItems().Result[ItemID];
+            Details.Show();
         }
     }
 }

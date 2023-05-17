@@ -16,9 +16,11 @@ namespace Project.Model
         public string Description { get; set; }
 
         [JsonProperty("effect")]
-        public string Effect { get; set; }
+        private string effect { get; set; }
 
-        [JsonProperty("type ")]
+        public string Effect { get { return $"Effect: {effect}"; } }
+
+        [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("buy_price")]

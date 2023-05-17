@@ -4,6 +4,20 @@
              xmlns:local="clr-namespace:Project"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
+        <ControlTemplate x:Key="ItemButtonHover" TargetType="Button">
+            <Border Cursor="Hand" CornerRadius="8" BorderBrush="Gray" BorderThickness="1" Margin="-1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,0">
+                        <GradientStop Color="LightGray" />
+                        <GradientStop Color="WhiteSmoke" Offset="0.5" />
+                        <GradientStop Color="LightGray" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Controls/view.png" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0" Width="15" Height="9"/>
+                    <TextBlock Foreground="Gray" FontSize="10" Text="See details" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                </StackPanel>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

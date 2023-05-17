@@ -1,0 +1,76 @@
+﻿<Window x:Class="Project.Controls.ItemDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project.Controls" xmlns:viewmodel="clr-namespace:Project.ViewModel" xmlns:converter="clr-namespace:Project.ViewModel.Converter"
+        mc:Ignorable="d"
+        Title="Item Details" Height="250" Width="600">
+    <Window.DataContext>
+        <viewmodel:ItemDetailVM />
+    </Window.DataContext>
+    <Window.Resources>
+        <converter:IntToTextConverter x:Key="Money"/>
+        <converter:IntToCircConverter x:Key="Circulation"/>
+    </Window.Resources>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="{Binding Item.Name, FallbackValue=Hammer}" FontWeight="Bold"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Item.Description, FallbackValue=Description}" TextWrapping="Wrap" Margin="0,0,0,5"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Item.Effect, FallbackValue=Effect:}" Foreground="Green" TextWrapping="Wrap"/>
+        </StackPanel>
+        <Image HorizontalAlignment="Right" Height="100" VerticalAlignment="Top" Width="100" Grid.Column="1" Margin="0,5,35,0" Grid.RowSpan="2" Source="{Binding Item.Image}"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="BorderBrush" Value="LightGray" />
+                </Style>
+            </Grid.Resources>
+            <Border>
+                <StackPanel Orientation="Horizontal"  >
+                    <Label Content="Buy:" FontWeight="Bold" VerticalAlignment="Center" />
+                    <Label Content="{Binding Item.BuyPrice, FallbackValue=100, Converter={StaticResource Money}}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1">
+                <StackPanel Orientation="Horizontal"  >
+                    <Label Content="Sell:" FontWeight="Bold" VerticalAlignment="Center" />
+                    <Label Content="{Binding Item.SellPrice, FallbackValue=100, Converter={StaticResource Money}}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1">
+                <StackPanel Orientation="Horizontal"  >
+                    <Label Content="Value:" FontWeight="Bold" VerticalAlignment="Center" />
+                    <Label Content="{Binding Item.MarketValue, FallbackValue=100, Converter={StaticResource Money}}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1">
+                <StackPanel Orientation="Horizontal"  >
+                    <Label Content="Circulation:" FontWeight="Bold" VerticalAlignment="Center" />
+                    <Label Content="{Binding Item.Circulation, FallbackValue=100, Converter={StaticResource Circulation}}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Button Grid.Row="2" Grid.Column="1" Width="80" Height="50" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Template="{StaticResource ItemButtonHover}" />
+    </Grid>
+</Window>
