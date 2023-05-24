@@ -1,0 +1,94 @@
+{
+    "rank": "Outstanding Boxer",
+    "level": 27,
+    "honor": 740,
+    "gender": "Male",
+    "property": "Private Island",
+    "signup": "2020-05-06 12:02:25",
+    "awards": 275,
+    "friends": 7,
+    "enemies": 5,
+    "forum_posts": 4,
+    "karma": 0,
+    "age": 1112,
+    "role": "Civilian",
+    "donator": 1,
+    "player_id": 2547386,
+    "name": "Delinor",
+    "property_id": 3266502,
+    "competition": null,
+    "revivable": 0,
+    "life": {
+        "current": 1837,
+        "maximum": 1837,
+        "increment": 91,
+        "interval": 300,
+        "ticktime": 283,
+        "fulltime": 0
+    },
+    "status": {
+        "description": "Returning to Torn from Argentina",
+        "details": "",
+        "state": "Traveling",
+        "color": "blue",
+        "until": 0
+    },
+    "job": {
+        "job": "Employee",
+        "position": "Employee",
+        "company_id": 90860,
+        "company_name": "Too much Ecchi",
+        "company_type": 10
+    },
+    "faction": {
+        "position": "Werewolf",
+        "faction_id": 946,
+        "days_in_faction": 407,
+        "faction_name": "PT-IronHearts",
+        "faction_tag": "PT"
+    },
+    "married": {
+        "spouse_id": 0,
+        "spouse_name": "None",
+        "duration": 0
+    },
+    "basicicons": {
+        "icon6": "Male",
+        "icon3": "Donator",
+        "icon27": "Company - Sales Assistant of Too much Ecchi (Adult Novelties)",
+        "icon9": "Faction - Werewolf of PT-IronHearts",
+        "icon71": "Traveling"
+    },
+    "states": {
+        "hospital_timestamp": 0,
+        "jail_timestamp": 0
+    },
+    "last_action": {
+        "status": "Idle",
+        "timestamp": 1684922322,
+        "relative": "1 minute ago"
+    },
+    "networth": {
+        "pending": 0,
+        "wallet": 7587381,
+        "bank": 2044200000,
+        "points": 2672700,
+        "cayman": 0,
+        "vault": 0,
+        "piggybank": 0,
+        "items": 411060217,
+        "displaycase": 0,
+        "bazaar": 58175050,
+        "itemmarket": 0,
+        "properties": 24846000,
+        "stockmarket": 1190672460,
+        "auctionhouse": 0,
+        "company": 0,
+        "bookie": 0,
+        "enlistedcars": 961569,
+        "loan": 0,
+        "unpaidfees": -9975000,
+        "total": 3730200377,
+        "parsetime": 0.22403597831726074
+    }
+}

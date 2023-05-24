@@ -16,6 +16,7 @@ namespace Project.Repository
         private Dictionary<int, Item> _items = null;
         private List<RWar> _wars = null;
         private List<string> _itemtypes = null;
+        private Profile _profile = null;
 
         async public Task<Dictionary<int, Item>> GetItems()
         {
@@ -55,7 +56,7 @@ namespace Project.Repository
         }
         public async Task RefreshWars()
         {
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             var assembly = Assembly.GetExecutingAssembly();
             using (var reader = new StreamReader(assembly.GetManifestResourceStream("Project.Resources.sampleData.json")))
             {
@@ -77,14 +78,23 @@ namespace Project.Repository
             _itemtypes.Insert(0, "All");
         }
 
-        public Task<Profile> GetProfile()
+        public async Task<Profile> GetProfile()
         {
-            throw new NotImplementedException();
+            if (_profile == null)
+            {
+                await RefreshProfile();
+            }
+            return _profile;
         }
 
-        public Task RefreshProfile()
+        public async Task RefreshProfile()
         {
-            throw new NotImplementedException();
+            await Task.Delay(1000);
+            var assembly = Assembly.GetExecutingAssembly();
+            using (var reader = new StreamReader(assembly.GetManifestResourceStream("Project.Resources.profileData.json")))
+            {
+                _profile = JsonConvert.DeserializeObject<Profile>(await reader.ReadToEndAsync());
+            }
         }
     }
 }

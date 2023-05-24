@@ -28,5 +28,11 @@
                 </Style>
             </Style.Resources>
         </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
     </Application.Resources>
 </Application>

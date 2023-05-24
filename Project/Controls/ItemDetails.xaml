@@ -69,8 +69,11 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <Button Grid.Row="2" Grid.Column="1" Width="80" Height="50" 
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                Template="{StaticResource ItemButtonHover}" />
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom">
+            <Button  Width="80" Height="30" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Content="Open market" Command="{Binding OpenMarket}"/>
+            <Label Content="(Requires login)" HorizontalAlignment="Center" />
+        </StackPanel>
     </Grid>
 </Window>

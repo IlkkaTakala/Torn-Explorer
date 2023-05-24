@@ -22,13 +22,13 @@
             </LinearGradientBrush>
         </Grid.Background>
         <TabControl Margin="0,0,0,0" TabStripPlacement="Left">
-            <TabItem Header="Items">
+            <TabItem Header="Items" Padding="5">
                 <Grid Margin="5,20,5,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal" Grid.Row="0" >
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,0,0,0">
                         <TextBlock Text="Filter by type:" VerticalAlignment="Center"/>
                         <ComboBox x:Name="lstType" HorizontalAlignment="Left" Margin="10,0,10,0" VerticalAlignment="Center" Width="120"
                                   ItemsSource="{Binding ItemTypes}" SelectedItem="{Binding SelectedType}"
@@ -73,7 +73,7 @@
                     <TextBlock Text="{Binding LoadingString}" Grid.Row="1" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Ranked wars">
+            <TabItem Header="Ranked wars" Padding="5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>

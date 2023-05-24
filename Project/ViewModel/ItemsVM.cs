@@ -85,13 +85,9 @@ namespace Project.ViewModel
 
 		private async void GetAllData()
 		{
-            List<Task> tasks = new List<Task>
-            {
-                GetItemsAsync(),
-                GetWarsAsync(),
-                GetTypesAsync()
-            };
-            await Task.WhenAll(tasks);
+			await GetItemsAsync();
+			await GetWarsAsync();
+			GetTypesAsync();
         }
 
         private async void FilterItems()
@@ -115,6 +111,9 @@ namespace Project.ViewModel
 			LoadingString = "Loading...";
 			GetAllData();
 			Filter = new RelayCommand(FilterItems);
+			RepositorySwitcher.APIChangedDelegate += () => { 
+				GetAllData();
+			};
         }
     }
 }

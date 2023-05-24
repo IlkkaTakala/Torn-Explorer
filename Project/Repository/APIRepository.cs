@@ -43,10 +43,6 @@ namespace Project.Repository
 
         public async Task<List<string>> GetItemTypes()
         {
-            if (_itemtypes == null)
-            {
-                await RefreshItemTypes();
-            }
             return _itemtypes;
         }
 
@@ -81,6 +77,7 @@ namespace Project.Repository
 
                 _items = JObject.Parse(json).SelectToken("items").ToObject<Dictionary<int, Item>>().Where((data) => !data.Value.Type.Equals("Unused")).ToDictionary(t => t.Key, t => t.Value);
 
+                await RefreshItemTypes();
             }
             catch (Exception ex)
             {

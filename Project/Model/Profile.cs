@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Markup;
+using Newtonsoft.Json;
 
 namespace Project.Model
 {
@@ -38,7 +40,19 @@ namespace Project.Model
         public string Details { get; set; }
         public string State { get; set; }
         public string Color { get; set; }
-        public int Until { get; set; }
+
+        [JsonProperty("until"), JsonConverter(typeof(MicrosecondEpochConverter))]
+        public DateTime Until { get; set; }
+
+        public string For
+        {
+            get
+            {
+                if (Until > DateTime.Now)
+                    return "For: " + (Until - DateTime.Now).ToString("h'h 'm'm 's's");
+                else return "";
+            }
+        }
     }
 
     public class Job
@@ -57,14 +71,27 @@ namespace Project.Model
 
     public class States
     {
-        public int Hospital_timestamp { get; set; }
-        public int Jail_timestamp { get; set; }
+        [JsonProperty("hospital_timestamp"), JsonConverter(typeof(MicrosecondEpochConverter))]
+        public DateTime Hospital_timestamp { get; set; }
+
+        [JsonProperty("jail_timestamp"), JsonConverter(typeof(MicrosecondEpochConverter))]
+        public DateTime Jail_timestamp { get; set; }
     }
 
     public class Last_Action
     {
         public string Status { get; set; }
-        public int Timestamp { get; set; }
+
+        [JsonProperty("timestamp"), JsonConverter(typeof(MicrosecondEpochConverter))]
+        public DateTime Timestamp { get; set; }
+
+        public string LastAction
+        {
+            get
+            {
+                return "Last action: " + (DateTime.Now.ToUniversalTime() - Timestamp).ToString("h'h 'm'm 's's'");
+            }
+        }
     }
 
     public class Competition

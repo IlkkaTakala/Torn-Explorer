@@ -38,6 +38,7 @@ namespace Project.Repository
         {
             API_KEY = value;
             useLocal = API_KEY == null;
+            APIChangedDelegate.DynamicInvoke();
         }
         public static string GetAPI()
         {
@@ -55,6 +56,9 @@ namespace Project.Repository
             if (online == null)
             online = new APIRepository();
         }
+
+        public delegate void APIChanged();
+        public static APIChanged APIChangedDelegate { get; set; }
 
         public RepositorySwitcher() 
         { 
