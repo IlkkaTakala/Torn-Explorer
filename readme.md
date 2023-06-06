@@ -11,6 +11,7 @@ Introduction of the API on Torn's official wiki:
 # Project details
 * Sometimes the Torn API is down, especially during June 2023 as they are migrating their services. The tool will give a warning if this is the case.  
 * As the provided API key should not be public knowledge, it will be automatically disabled in a couple of weeks. 
+* Ranked wars are scheduled every Tuesday at noon and happen during weekends, so on Mondays and Tuesday mornings the list might be empty.
   
 
 # Switching repositories
