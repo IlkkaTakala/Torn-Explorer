@@ -29,7 +29,6 @@ namespace Project.Repository
 
         async public Task RefreshItems()
         {
-            await Task.Delay(2000);
             var assembly = Assembly.GetExecutingAssembly();
             using (var reader = new StreamReader(assembly.GetManifestResourceStream("Project.Resources.sampleData.json")))
             {
@@ -56,7 +55,6 @@ namespace Project.Repository
         }
         public async Task RefreshWars()
         {
-            await Task.Delay(1000);
             var assembly = Assembly.GetExecutingAssembly();
             using (var reader = new StreamReader(assembly.GetManifestResourceStream("Project.Resources.sampleData.json")))
             {
@@ -89,7 +87,6 @@ namespace Project.Repository
 
         public async Task RefreshProfile()
         {
-            await Task.Delay(1000);
             var assembly = Assembly.GetExecutingAssembly();
             using (var reader = new StreamReader(assembly.GetManifestResourceStream("Project.Resources.profileData.json")))
             {

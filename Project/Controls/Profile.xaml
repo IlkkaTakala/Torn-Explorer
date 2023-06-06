@@ -48,10 +48,10 @@
                         <Label Content="{Binding CurrentProfile.Last_action.LastAction}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding CurrentProfile.Status.Description}"/>
+                        <Label Content="{Binding CurrentProfile.Status.Description}" ContentStringFormat="Status: {0}"/>
                         <Label Content="{Binding CurrentProfile.Status.For}"/>
                     </StackPanel>
-                    <Label Content="{Binding CurrentProfile.Status.Details}"/>
+                        <Label Content="{Binding CurrentProfile.Status.Details}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Border Grid.Column="1" Margin="0" CornerRadius="10" BorderThickness="2" BorderBrush="Gray" HorizontalAlignment="Right" VerticalAlignment="Top" Background="LightGray">

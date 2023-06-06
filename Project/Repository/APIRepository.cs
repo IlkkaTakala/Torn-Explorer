@@ -75,7 +75,10 @@ namespace Project.Repository
 
                 string json = await response.Content.ReadAsStringAsync();
 
-                _items = JObject.Parse(json).SelectToken("items").ToObject<Dictionary<int, Item>>().Where((data) => !data.Value.Type.Equals("Unused")).ToDictionary(t => t.Key, t => t.Value);
+                var token = JObject.Parse(json).SelectToken("items");
+                if (token != null)
+                    _items = token.ToObject<Dictionary<int, Item>>().Where((data) => !data.Value.Type.Equals("Unused")).ToDictionary(t => t.Key, t => t.Value);
+                else throw new Exception("API down or invalid key");
 
                 await RefreshItemTypes();
             }
@@ -123,8 +126,10 @@ namespace Project.Repository
 
                 string json = await response.Content.ReadAsStringAsync();
 
-                _wars = JObject.Parse(json).SelectToken("rankedwars").ToObject<Dictionary<int, RWar>>().Values.Where(war => war.Data.End.CompareTo(MicrosecondEpochConverter._epoch) == 0).OrderBy(war => war.Starting).ToList();
-
+                var token = JObject.Parse(json).SelectToken("rankedwars");
+                if (token != null)
+                _wars = token.ToObject<Dictionary<int, RWar>>().Values.Where(war => war.Data.End.CompareTo(MicrosecondEpochConverter._epoch) == 0).OrderBy(war => war.Starting).ToList();
+                else throw new Exception("API down or invalid key");
             }
             catch (Exception ex)
             {

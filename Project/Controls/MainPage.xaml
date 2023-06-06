@@ -80,10 +80,18 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
                     <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold" VerticalAlignment="Top" Margin="15,5,0,0" Text="Ongoing ranked wars" />
                     <TextBlock Grid.Row="1" FontSize="12" VerticalAlignment="Bottom" Margin="15,0,0,0" Text="Opening faction page requires login" />
-
-                    <ListView Grid.Row="2" BorderThickness="0" x:Name="lstWars" SelectionMode="Single" Margin="5,5,5,0" ItemsSource="{Binding Wars}">
+                    <StackPanel Orientation="Horizontal" Grid.RowSpan="2" Grid.Column="1" Margin="40,0,0,0">
+                        <TextBlock  Text="Filter by faction name:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtWarSearch" Text="{Binding WarSearchText, UpdateSourceTrigger=PropertyChanged, Delay=250}" TextWrapping="Wrap" 
+                                     Width="160" Margin="10,0,10,0" VerticalAlignment="Center" Padding="5"/>
+                    </StackPanel>
+                    <ListView Grid.Row="2" Grid.ColumnSpan="2" BorderThickness="0" x:Name="lstWars" SelectionMode="Single" Margin="5,5,5,0" ItemsSource="{Binding Wars}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Focusable" Value="false"/>

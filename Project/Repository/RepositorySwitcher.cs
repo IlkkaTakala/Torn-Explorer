@@ -28,8 +28,8 @@ namespace Project.Repository
     public class RepositorySwitcher
     {
 
-        private static string API_KEY = "6AySUcuLPwo06cA8";
-        private static bool useLocal = false;
+        private static string API_KEY = "";
+        private static bool useLocal = true;
 
         private static LocalRepository local;
         private static APIRepository online;

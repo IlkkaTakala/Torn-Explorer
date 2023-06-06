@@ -52,6 +52,18 @@ namespace Project.ViewModel
 				FilterItems();
             }
 		}
+		
+		private string _warsearchText;
+
+		public string WarSearchText
+		{
+			get { return _warsearchText; }
+			set { 
+				_warsearchText = value;
+				OnPropertyChanged("SelectedType");
+				FilterWars();
+            }
+		}
 
 		private string _loadingString = "Loading...";
 
@@ -85,9 +97,11 @@ namespace Project.ViewModel
 
 		private async void GetAllData()
 		{
-			await GetItemsAsync();
-			await GetWarsAsync();
-			GetTypesAsync();
+            List<Task> Tasks = new List<Task>();
+            Tasks.Add(GetItemsAsync());
+			Tasks.Add(GetWarsAsync());
+			await Task.WhenAll(Tasks);
+            GetTypesAsync();
         }
 
         private async void FilterItems()
@@ -101,6 +115,18 @@ namespace Project.ViewModel
 			{
                 Items = await RepositorySwitcher.GetRepository().GetItems(new FilterParams{Name=SearchText, Type=SelectedType});
 				LoadingString = "";
+            }
+        }
+        private async void FilterWars()
+		{ 
+			//Items = null;
+            if (WarSearchText == null)
+            {
+				await GetWarsAsync();
+			} else
+			{
+				var _war = await RepositorySwitcher.GetRepository().GetWars();
+                Wars = _war.Where(w => w.First.Name.ToLower().Contains(WarSearchText.ToLower()) || w.Second.Name.ToLower().Contains(WarSearchText.ToLower())).ToList();
             }
         }
 

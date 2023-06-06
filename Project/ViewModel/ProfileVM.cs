@@ -29,10 +29,10 @@ namespace Project.ViewModel
         }
         public SeriesCollection Series { get; }
 
-        private async void GetProfile()
+        private async Task GetProfile()
         {
             CurrentProfile = await RepositorySwitcher.GetRepository().GetProfile();
-
+            Series.Clear();
             double other = 0.0;
             foreach (var propertyInfo in CurrentProfile.Networth.GetType()
                                 .GetProperties(
@@ -84,11 +84,9 @@ namespace Project.ViewModel
         {
             Series = new SeriesCollection();
             RepositorySwitcher.SetupRepository();
+            RepositorySwitcher.APIChangedDelegate += async () => await GetProfile();
             OpenLink = new RelayCommand(OpenTorn);
-            Refresh = new RelayCommand(async () => { 
-                await RepositorySwitcher.GetRepository().RefreshProfile(); 
-                OnPropertyChanged(nameof(CurrentProfile));
-            });
+            Refresh = new RelayCommand(async () => await GetProfile());
             GetProfile();
         }
     }

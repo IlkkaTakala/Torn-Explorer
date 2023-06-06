@@ -49,7 +49,11 @@ namespace Project.Model
             get
             {
                 if (Until > DateTime.Now)
-                    return "For: " + (Until - DateTime.Now).ToString("h'h 'm'm 's's");
+                {
+                    TimeSpan span = Until - DateTime.Now;
+                    int hours = (int)span.TotalHours;
+                    return $"For: {hours}h {span.Minutes}m {span.Seconds}s";
+                }
                 else return "";
             }
         }
@@ -89,7 +93,10 @@ namespace Project.Model
         {
             get
             {
-                return "Last action: " + (DateTime.Now.ToUniversalTime() - Timestamp).ToString("h'h 'm'm 's's'");
+                TimeSpan span = DateTime.Now.ToUniversalTime() - Timestamp;
+                int hours = (int)span.TotalHours;
+                return $"Last action: : {hours}h {span.Minutes}m {span.Seconds}s";
+               // return "Last action: " + (DateTime.Now.ToUniversalTime() - Timestamp).ToString("h'h 'm'm 's's'");
             }
         }
     }

@@ -14,7 +14,8 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="New API key: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="apikey" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                     Width="300" TextAlignment="Center" Padding="4">
+                     Width="300" TextAlignment="Center" Padding="4"
+                     Text="6AySUcuLPwo06cA8">
                 
             </TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
