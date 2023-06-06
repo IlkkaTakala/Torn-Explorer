@@ -23,7 +23,7 @@ namespace Project.ViewModel
 		}
 		
 		public ItemDetailVM() {
-			OpenMarket = new RelayCommand(() => { Process.Start($"https://www.torn.com/imarket.php#/p=shop&step=shop&type=&searchname={_item.Name.Replace(" ", "_")}"); });
+			OpenMarket = new RelayCommand(() => { Process.Start($"https://www.torn.com/imarket.php#/p=shop&step=shop&type=&searchname={_item.Name.Replace(" ", "+")}"); });
 		}
 	}
 }

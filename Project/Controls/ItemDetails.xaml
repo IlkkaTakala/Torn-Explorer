@@ -13,6 +13,9 @@
         <converter:IntToTextConverter x:Key="Money"/>
         <converter:IntToCircConverter x:Key="Circulation"/>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/bg_regular.jpg" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,500,500" />
+    </Window.Background>
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -41,7 +44,7 @@
             <Grid.Resources>
                 <Style TargetType="Border">
                     <Setter Property="BorderThickness" Value="1" />
-                    <Setter Property="BorderBrush" Value="LightGray" />
+                    <Setter Property="BorderBrush" Value="Gray" />
                 </Style>
             </Grid.Resources>
             <Border Padding="5">

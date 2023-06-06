@@ -13,6 +13,9 @@
     <Window.Resources>
         <converter:IntToTextConverter x:Key="Money"/>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Resources/bg_regular.jpg" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,500,500" />
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -21,8 +24,8 @@
         <Border Grid.Column="0" Padding="20">
             <Border.Background>
                 <LinearGradientBrush StartPoint="1,1" EndPoint="0,1">
-                    <GradientStop Color="LightGray" />
-                    <GradientStop Color="White" Offset="0.05" />
+                    <GradientStop Color="Gray" />
+                    <GradientStop Color="Transparent" Offset="0.05" />
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
@@ -115,10 +118,10 @@
             <ScrollViewer Grid.Row="1">
                 <ScrollViewer.Background>
                     <LinearGradientBrush StartPoint="1,0" >
-                        <GradientStop Color="LightGray" />
-                        <GradientStop Color="White" Offset="0.05" />
-                        <GradientStop Color="White" Offset="0.95" />
-                        <GradientStop Color="LightGray" Offset="1" />
+                        <GradientStop Color="Gray" />
+                        <GradientStop Color="Transparent" Offset="0.05" />
+                        <GradientStop Color="Transparent" Offset="0.95" />
+                        <GradientStop Color="Gray" Offset="1" />
                     </LinearGradientBrush>
                 </ScrollViewer.Background>
                 <Grid>

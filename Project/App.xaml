@@ -14,7 +14,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Controls/view.png" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0" Width="15" Height="9"/>
+                    <Image Source="/Resources/view.png" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,0,0,0" Width="15" Height="9"/>
                     <TextBlock Foreground="Gray" FontSize="10" Text="See details" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 </StackPanel>
             </Border>
@@ -33,6 +33,13 @@
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Arial" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#dfdfdf" />
+        </Style>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="#dfdfdf" />
+            <Setter Property="BorderBrush" Value="#dfdfdf" />
         </Style>
     </Application.Resources>
 </Application>

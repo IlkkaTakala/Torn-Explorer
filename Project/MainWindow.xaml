@@ -4,14 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodel="clr-namespace:Project.ViewModel"
         mc:Ignorable="d"
-        Title="Torn explorer" Height="450" Width="800">
+        Title="Torn explorer" Height="450" Width="800" Background="White">
     <Window.DataContext>
         <viewmodel:WindowView />
     </Window.DataContext>
-    
     <Grid>
-        <Menu VerticalAlignment="Top" Height="auto">
-            <MenuItem Header="Set API key" Command="{Binding SwitchPageCommand}"/>
+        <Menu VerticalAlignment="Top" Height="auto" Background="White" Margin="2">
+            <MenuItem Header="{Binding APIText}" Command="{Binding SwitchPageCommand}"/>
             <MenuItem Header="Refresh" Command="{Binding Refresh}"/>
             <MenuItem Header="Profile" Command="{Binding OpenProfile}"/>
         </Menu>

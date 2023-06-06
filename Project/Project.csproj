@@ -184,7 +184,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Controls\view.png" />
+    <Resource Include="Resources\token_shop.png" />
+    <Resource Include="Resources\view.png" />
+    <Resource Include="Resources\bg_regular.jpg" />
     <Content Include="Resources\view.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

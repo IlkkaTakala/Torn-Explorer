@@ -95,7 +95,7 @@ namespace Project.Model
             {
                 TimeSpan span = DateTime.Now.ToUniversalTime() - Timestamp;
                 int hours = (int)span.TotalHours;
-                return $"Last action: : {hours}h {span.Minutes}m {span.Seconds}s";
+                return $"Last action: {hours}h {span.Minutes}m {span.Seconds}s";
                // return "Last action: " + (DateTime.Now.ToUniversalTime() - Timestamp).ToString("h'h 'm'm 's's'");
             }
         }

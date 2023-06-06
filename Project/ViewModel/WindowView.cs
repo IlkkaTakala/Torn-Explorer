@@ -23,6 +23,8 @@ namespace Project.ViewModel
         public RelayCommand Refresh { get; set; }
         public RelayCommand OpenProfile { get; set; }
 
+        public string APIText { get; set; } 
+
         private void OpenProf()
         {
             var page = new Profile();
@@ -45,11 +47,15 @@ namespace Project.ViewModel
             {
                 CurrentPage = SettingsPage;
                 OnPropertyChanged("CurrentPage");
+                APIText = "Return";
+                OnPropertyChanged(nameof(APIText));
             }
             else if (CurrentPage is Settings)
             {
                 CurrentPage = MainPage;
                 OnPropertyChanged("CurrentPage");
+                APIText = "Set API key";
+                OnPropertyChanged(nameof(APIText));
             }
         }
         public WindowView() 
@@ -58,10 +64,12 @@ namespace Project.ViewModel
             MainPage = new MainPage();
             SettingsPage = new Settings();
             (SettingsPage.DataContext as SettingsVM).GoBack = new RelayCommand(SwitchPage);
-            CurrentPage = MainPage;
+            CurrentPage = SettingsPage;
             SwitchPageCommand = new RelayCommand(SwitchPage);
 			Refresh = new RelayCommand(RefreshData);
             OpenProfile = new RelayCommand(OpenProf);
+            APIText = "Return";
+            OnPropertyChanged(nameof(APIText));
         }
     }
 }

@@ -10,7 +10,13 @@
     <Page.DataContext>
         <viewmodel:SettingsVM />
     </Page.DataContext>
+    <Page.Background>
+        <ImageBrush ImageSource="/Resources/bg_regular.jpg" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,500,500"/>
+    </Page.Background>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/token_shop.png" />
+        </Grid.Background>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="New API key: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox x:Name="apikey" VerticalAlignment="Center" HorizontalAlignment="Center" 
