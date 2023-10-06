@@ -1,4 +1,7 @@
 # Exam Project
+This project was an exam project for a tool development course at Howest University of Applied sciences
+
+# Tool
 The aim of the project is to create an external interface for the marketplace of the text-based game Torn (https://www.torn.com/).
   
 The API is available at https://api.torn.com/. Some features require an API key available for egistered accounts, but a sample key is provided with the project.
@@ -15,4 +18,5 @@ Introduction of the API on Torn's official wiki:
   
 
 # Switching repositories
-A local sample data is provided as a replacement for the API. This data can activated by clicking on the Skip-button on the Set API Key -screen.
+A local sample data is provided as a replacement for the API. This data can activated by clicking on the Skip-button on the Set API Key -screen.  
+**API key is no longer valid.**
